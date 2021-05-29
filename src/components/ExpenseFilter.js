@@ -7,7 +7,7 @@ const ExpenseFilter = (props) => {
     };
 
     return (
-        <div className="form-control mt-4 d-flex">
+        <div className="form-control my-4 d-flex">
             <label htmlFor="filterExpense" className="mb-1 d-block">Filter By: </label>
             <select value={props.selected} onChange={filterChangeHandler} className="form-select form-select-sm" id="filterExpense">
                 <option value='2022'>2022</option>

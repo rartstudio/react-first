@@ -1,6 +1,6 @@
 import ExpenseDate from "./ExpenseDate";
 import ExpenseAmount from "./ExpenseAmount";
-import { useState } from "react";
+import React,{ useState } from "react";
 import Card from "./Card";
 
 const ExpenseItem = (props) => {

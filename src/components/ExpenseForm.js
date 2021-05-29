@@ -36,21 +36,29 @@ const ExpenseForm = (props) => {
     const dateChangeHandler = (event) => {
         setEnteredDate(event.target.value);
     };
+    const setDefaultValueForm = () => {
+        setEnteredTitle('');
+        setEnteredAmount('');
+        setEnteredDate('');
+    }
     const submitHandler = (event) => {
         event.preventDefault();
         
         const expenseData = {
             title: enteredTitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
             date: new Date (enteredDate)
         }
 
         // console.log(expenseData);
         props.onSaveExpenseData(expenseData);
-        setEnteredTitle('');
-        setEnteredAmount('');
-        setEnteredDate('');
+        setDefaultValueForm();
     };
+
+    const formVisibleHandler = () => {
+        setDefaultValueForm();
+        props.onFormDisplayHandler(false);
+    }
 
     return (
         <form onSubmit={submitHandler}>
@@ -66,6 +74,7 @@ const ExpenseForm = (props) => {
                 <label htmlFor="dateExp" className="form-label">Date</label>
                 <input id="dateExp" value={enteredDate} onChange={dateChangeHandler} type="date" className="form-control" min="2019-01-01" max="2022-12-31"/>
             </div>
+            <button type="button" className="btn btn-light me-4" onClick={formVisibleHandler}>Cancel</button>
             <button type="submit" className="btn btn-primary">Add Expense</button>
         </form>
     );
